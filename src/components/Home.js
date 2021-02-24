@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
 import { firestore } from '../firebase';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const BlogHeading = styled.h1`
+  text-align: center;
+  color: #2196f3;
+  margin-bottom: 2px;
+`;
+
+const PostSubTitle = styled.p`
+  font-size: 13px;
+`;
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -24,8 +35,8 @@ function Home() {
 
   return (
     <div className="home">
-      <h1 style={styles.heading}>Tech Blog</h1>
-      <button class="createPostBtn">This is a button</button>
+      <BlogHeading>Tech Blog</BlogHeading>
+      {/* <button class="createPostBtn">This is a button</button> */}
       <div id="blog-by">Aakash</div>
 
       {posts.map((post, index) => (
@@ -34,7 +45,7 @@ function Home() {
             <h3>{post.title}</h3>
           </Link>
 
-          <p>{post.subTitle}</p>
+          <PostSubTitle>{post.subTitle}</PostSubTitle>
         </div>
       ))}
     </div>
