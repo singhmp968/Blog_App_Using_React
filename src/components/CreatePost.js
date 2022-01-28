@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { firestore } from '../firebase';
 
 function CreatePost() {
   const [title, setTitle] = useState();
@@ -11,6 +12,17 @@ function CreatePost() {
     console.log('title', title);
     console.log('subTitle', subTitle);
     console.log('content', content);
+
+    firestore.collection('posts').add({
+      // title: title.value,
+      // content: content.value,
+      // subTitle: subTitle.value,
+      // createdAt: new Date(),
+      title,
+      content,
+      subTitle,
+      createdAt: new Date(),
+    });
   }
 
   return (
